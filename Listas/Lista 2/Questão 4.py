@@ -7,7 +7,7 @@ import numpy as np
 import scipy.integrate as integrate
 import math
 
-sys.setrecursionlimit(5000)
+sys.setrecursionlimit(2000)
 
 def prob(n, x, p):
     if (x == 0):
@@ -44,8 +44,8 @@ class PDF():
 probabilidades = []
 valores_x = []
 
-n = 1500+100*8
-p = 0.5+(6/50)
+n = 800
+p = 0.8
 
 for i in range(n):
   valores_x.append(i+1)
@@ -74,8 +74,8 @@ print("Esperança = ", esperanca)
 print("Variancia = ", variancia)
 print("Desvio padrão = ",desvioPadrao)
 
-y = [esperanca-desvioPadrao, esperanca+desvioPadrao]
-x = [0, 2300]
+# y = [esperanca-desvioPadrao, esperanca+desvioPadrao]
+# x = [0, 2300]
 
 plt.plot(valores_x, fdp)
 # plt.text(0,esperanca,'E(x)')
