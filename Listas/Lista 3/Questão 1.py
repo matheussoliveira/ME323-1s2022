@@ -44,7 +44,32 @@ for partidaAtual in range(numeroTotalPartidas):
 numeroRodadasList = np.array(numeroRodadasList)
 
 print('----------------------------------------------')
-print('Numero total de partidas: ', numeroTotalPartidas)
-print('Numero vitorias A: ', numeroVitoriasA)
-print('Numero vitorias B: ', numeroVitoriasB)
-print('Media numero rodadas: ', numeroRodadasList.mean())
+print('Número total de partidas: ', numeroTotalPartidas)
+print('Número vitorias A: ', numeroVitoriasA)
+print('Número vitorias B: ', numeroVitoriasB)
+print('Média numero rodadas: ', numeroRodadasList.mean())
+
+
+probabilidades = []
+dicionario = dict.fromkeys(numeroRodadasList) # Remove dados duplicados
+rodadas = sorted(list(dicionario))
+
+for value in rodadas:
+    probability = np.count_nonzero(numeroRodadasList == value)/len(numeroRodadasList)
+    probabilidades.append(probability)
+
+esperanca = 0
+
+for index in range(len(rodadas)):
+    esperanca += rodadas[index] * probabilidades[index]
+
+print("Esperança: ", esperanca)
+
+variancia = 0
+
+for index in range(len(rodadas)):
+    variancia += (rodadas[index] - esperanca)**2 * probabilidades[index]
+
+
+print("Variância: ", variancia)
+
